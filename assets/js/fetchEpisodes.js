@@ -1,7 +1,7 @@
-fetch('https://kertojanaani.fi/feed/podcast')
-.then(response => response.text())
-.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
+fetch('/.netlify/functions/fetchPodcasts')
+  .then(response => response.text())
+  .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+  .then(data => {
     console.log(data);
     let items = data.querySelectorAll("item");
     let html = `<ul>`;
